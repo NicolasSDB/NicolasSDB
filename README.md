@@ -1,43 +1,44 @@
-<h2 align="left">Hi 👋! My name is Nicolas Brito and I'm a Backend Developer from Brazil 🇧🇷</h2>
+<h1 align="center">Nicolas Brito 👨‍💻</h1>
 
-###
+<p align="center">
+  Backend Developer • PHP • SQL Server • Industrial Systems
+</p>
 
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=NicolasSDB&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&theme=dracula" height="150" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=NicolasSDB&layout=compact&langs_count=6&theme=dracula" height="150" />
-</div>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/NicolasSDB/profile-assets/main/pug.gif" width="420" />
+</p>
 
-###
+---
 
-<img align="right" height="150" src="https://raw.githubusercontent.com/NicolasSDB/profile-assets/main/pug.gif" />
+## 🚀 About Me
 
-###
+Desenvolvedor focado em **sistemas internos**,  
+monitoramento de produção industrial e **banco de dados SQL Server**.
 
-<div align="left">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" height="30" />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="30" />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg" height="30" />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" height="30" />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" height="30" />
-</div>
+Atualmente aprimorando backend com PHP, Laravel e JavaScript.
 
-###
+---
 
-<div align="left">
-  <a href="https://www.linkedin.com/in/SEU-LINK-AQUI">
-    <img src="https://img.shields.io/static/v1?message=LinkedIn&logo=linkedin&color=0077B5&style=for-the-badge" height="35" />
-  </a>
-  <a href="mailto:SEUEMAIL">
-    <img src="https://img.shields.io/static/v1?message=Gmail&logo=gmail&color=D14836&style=for-the-badge" height="35" />
-  </a>
-</div>
+## 🛠 Tech Stack
 
-###
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=php,js,laravel,mysql,html,css,git" />
+</p>
 
-<br clear="both">
+---
 
-<img src="https://raw.githubusercontent.com/NicolasSDB/NicolasSDB/output/snake.svg" alt="Snake animation" />
+## 📊 GitHub Stats
+
+<p align="center">
+  <img height="160" src="https://github-readme-stats.vercel.app/api?username=NicolasSDB&show_icons=true&theme=dracula&hide_border=true" />
+  <img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=NicolasSDB&layout=compact&theme=dracula&hide_border=true" />
+</p>
+
+---
+
+## 🎯 Focus Areas
+
+- Backend Architecture
+- Database Design
+- Industrial Monitoring Systems
+- Process Automation
