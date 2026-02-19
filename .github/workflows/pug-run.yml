@@ -22,16 +22,14 @@ jobs:
 
       - name: Create pug overlay SVG
         run: |
-          echo '
+          cat > dist/pug-run.svg <<'SVG'
           <svg xmlns="http://www.w3.org/2000/svg" width="900" height="200">
-            <image href="snake.svg" x="0" y="0" width="900" height="200"/>
-            <image href="https://raw.githubusercontent.com/NicolasSDB/profile-assets/main/pug.gif"
-                   width="40" height="40">
-              <animateMotion dur="10s" repeatCount="indefinite"
-                path="M 0 100 L 900 100"/>
-            </animateMotion>
+            <image href="snake.svg" x="0" y="0" width="900" height="200" />
+            <image href="https://raw.githubusercontent.com/NicolasSDB/profile-assets/main/pug.gif" width="40" height="40">
+              <animateMotion dur="10s" repeatCount="indefinite" path="M 0 100 L 900 100" />
             </image>
           </svg>
+          SVG
           ' > dist/pug-run.svg
 
       - name: Publish to output branch
