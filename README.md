@@ -1,7 +1,19 @@
-<h1 align="center">Nicolas Brito 👨‍💻</h1>
+<!-- HEADER -->
+<h1 align="center">Nicolas Brito</h1>
+<p align="center">
+  <b>Backend • Dados • Sistemas industriais</b><br/>
+  PHP • SQL Server • MySQL • JavaScript • Laravel<br/>
+  Manaus-AM, Brasil 🇧🇷
+</p>
 
 <p align="center">
-  Backend Developer • PHP • SQL Server • Industrial Systems
+  <a href="https://www.linkedin.com/in/SEU-LINK-AQUI">
+    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/>
+  </a>
+  <a href="mailto:SEUEMAILAQUI">
+    <img src="https://img.shields.io/badge/Email-111111?style=for-the-badge&logo=gmail&logoColor=white"/>
+  </a>
+  <img src="https://komarev.com/ghpvc/?username=NicolasSDB&style=for-the-badge&color=blueviolet" />
 </p>
 
 <p align="center">
@@ -10,35 +22,17 @@
 
 ---
 
-## 🚀 About Me
+## 🧠 Resumo rápido (modo terminal)
 
-Desenvolvedor focado em **sistemas internos**,  
-monitoramento de produção industrial e **banco de dados SQL Server**.
+```txt
+> whoami
+Nicolas Brito — Assistente de TI & dev de sistemas internos
 
-Atualmente aprimorando backend com PHP, Laravel e JavaScript.
+> what_i_do
+- Backend em PHP (sistemas internos e integrações)
+- Banco de dados (SQL Server / MySQL) e relatórios
+- Monitoramento de produção e automações
+- Infra/Redes: UniFi / MikroTik / Google Workspace
 
----
-
-## 🛠 Tech Stack
-
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=php,js,laravel,mysql,html,css,git" />
-</p>
-
----
-
-## 📊 GitHub Stats
-
-<p align="center">
-  <img height="160" src="https://github-readme-stats.vercel.app/api?username=NicolasSDB&show_icons=true&theme=dracula&hide_border=true" />
-  <img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=NicolasSDB&layout=compact&theme=dracula&hide_border=true" />
-</p>
-
----
-
-## 🎯 Focus Areas
-
-- Backend Architecture
-- Database Design
-- Industrial Monitoring Systems
-- Process Automation
+> goal
+Estágio em Desenvolvimento / Testes (backend e dados)
