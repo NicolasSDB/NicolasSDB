@@ -7,8 +7,9 @@
 </p>
 
 <p align="center">
-  <img alt="Pug runner" src="https://raw.githubusercontent.com/NicolasSDB/NicolasSDB/output/pug-run.svg" />
+  <img alt="Pug Runner" src="https://raw.githubusercontent.com/NicolasSDB/NicolasSDB/output/pug-run.svg" />
 </p>
+
 
 
 <p align="center">
