@@ -1,33 +1,43 @@
-<h1 align="center">Nicolas Brito 👨‍💻</h1>
+<h2 align="left">Hi 👋! My name is Nicolas Brito and I'm a Backend Developer from Brazil 🇧🇷</h2>
 
-<p align="center">
-Backend Developer • PHP • SQL Server • Industrial Systems
-</p>
+###
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/NicolasSDB/profile-assets/main/pug.gif" width="450" />
-</p>
+<div align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=NicolasSDB&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&theme=dracula" height="150" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=NicolasSDB&layout=compact&langs_count=6&theme=dracula" height="150" />
+</div>
 
----
+###
 
-## 🚀 Sobre
+<img align="right" height="150" src="https://raw.githubusercontent.com/NicolasSDB/profile-assets/main/pug.gif" />
 
-Desenvolvedor focado em sistemas internos e monitoramento de produção industrial.
-Experiência prática com banco de dados SQL Server e desenvolvimento backend em PHP.
+###
 
----
+<div align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" height="30" />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="30" />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg" height="30" />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" height="30" />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" height="30" />
+</div>
 
-## 🛠 Stack
+###
 
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=php,js,laravel,mysql,html,css,git" />
-</p>
+<div align="left">
+  <a href="https://www.linkedin.com/in/SEU-LINK-AQUI">
+    <img src="https://img.shields.io/static/v1?message=LinkedIn&logo=linkedin&color=0077B5&style=for-the-badge" height="35" />
+  </a>
+  <a href="mailto:SEUEMAIL">
+    <img src="https://img.shields.io/static/v1?message=Gmail&logo=gmail&color=D14836&style=for-the-badge" height="35" />
+  </a>
+</div>
 
----
+###
 
-## 📈 GitHub Stats
+<br clear="both">
 
-<p align="center">
-  <img height="150" src="https://github-readme-stats.vercel.app/api?username=NicolasSDB&show_icons=true&theme=dracula" />
-  <img height="150" src="https://github-readme-stats.vercel.app/api/top-langs/?username=NicolasSDB&layout=compact&theme=dracula" />
-</p>
+<img src="https://raw.githubusercontent.com/NicolasSDB/NicolasSDB/output/snake.svg" alt="Snake animation" />
