@@ -1,4 +1,4 @@
-name: Generate Pug Runner
+name: Generate Pug Runner (CSP Proof)
 
 on:
   schedule:
@@ -21,49 +21,51 @@ jobs:
           github_user_name: ${{ github.repository_owner }}
           outputs: dist/snake.svg?palette=github-dark
 
-      - name: Build pug-run.svg (embed snake + sprite animation)
+      - name: Download pug frames
+        run: |
+          mkdir -p frames
+          curl -L -o frames/2.png https://raw.githubusercontent.com/NicolasSDB/profile-assets/main/2.png
+          curl -L -o frames/3.png https://raw.githubusercontent.com/NicolasSDB/profile-assets/main/3.png
+          curl -L -o frames/4.png https://raw.githubusercontent.com/NicolasSDB/profile-assets/main/4.png
+          curl -L -o frames/5.png https://raw.githubusercontent.com/NicolasSDB/profile-assets/main/5.png
+          ls -la frames
+
+      - name: Build pug-run.svg (NO external URLs)
         run: |
           node <<'NODE'
           const fs = require("fs");
 
-          // Lê o snake e mantém só o conteúdo interno (sem <svg> externo)
+          // 1) embute o snake (vira um <g> interno)
           const snakeInner = fs.readFileSync("dist/snake.svg", "utf8")
             .replace(/<\?xml[^>]*\?>\s*/g, "")
             .replace(/^\s*<svg[^>]*>/i, "")
             .replace(/<\/svg>\s*$/i, "");
 
-          const W = 900;
-          const H = 200;
-
-          // Seus frames (do repo profile-assets)
+          // 2) embute frames do pug como base64 (data URI)
+          const toDataUri = (p) => `data:image/png;base64,${fs.readFileSync(p).toString("base64")}`;
           const frames = [
-            "https://raw.githubusercontent.com/NicolasSDB/profile-assets/main/2.png",
-            "https://raw.githubusercontent.com/NicolasSDB/profile-assets/main/3.png",
-            "https://raw.githubusercontent.com/NicolasSDB/profile-assets/main/4.png",
-            "https://raw.githubusercontent.com/NicolasSDB/profile-assets/main/5.png",
+            toDataUri("frames/2.png"),
+            toDataUri("frames/3.png"),
+            toDataUri("frames/4.png"),
+            toDataUri("frames/5.png"),
           ];
-
-          // troca de frame (sprite)
           const frameValues = frames.join(";") + ";" + frames[0];
 
+          const W = 900, H = 200;
+
+          // 3) monta SVG final SEM nenhuma URL externa
           const svg = `
           <svg xmlns="http://www.w3.org/2000/svg"
                xmlns:xlink="http://www.w3.org/1999/xlink"
                width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
-
-            <!-- snake embutido (fundo) -->
             <g>${snakeInner}</g>
 
-            <!-- pug sprite -->
-            <image id="pug" href="${frames[0]}" xlink:href="${frames[0]}" width="42" height="42">
-
-              <!-- animação do sprite (perninhas) -->
+            <image href="${frames[0]}" xlink:href="${frames[0]}" width="42" height="42">
               <animate attributeName="href" dur="0.33s" repeatCount="indefinite"
                        calcMode="discrete" values="${frameValues}" />
               <animate attributeName="xlink:href" dur="0.33s" repeatCount="indefinite"
                        calcMode="discrete" values="${frameValues}" />
 
-              <!-- movimento (vai e volta) -->
               <animateMotion dur="10s" repeatCount="indefinite"
                              keyTimes="0;0.5;1"
                              calcMode="linear"
@@ -72,8 +74,14 @@ jobs:
           </svg>
           `.trim();
 
+          // 4) trava se ainda existir URL externa
+          if (svg.includes("https://raw.githubusercontent.com")) {
+            console.error("ERRO: SVG ainda contém URL externa. Abortando.");
+            process.exit(1);
+          }
+
           fs.writeFileSync("dist/pug-run.svg", svg, "utf8");
-          console.log("OK: dist/pug-run.svg gerado com sprite + movimento.");
+          console.log("OK: pug-run.svg gerado com base64 e sem URLs externas.");
           NODE
 
       - name: Publish to output branch
