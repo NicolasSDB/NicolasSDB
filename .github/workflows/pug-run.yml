@@ -2,7 +2,7 @@ name: Generate Pug Runner
 
 on:
   schedule:
-    - cron: "0 */12 * * *"   # a cada 12 horas
+    - cron: "0 */12 * * *"
   workflow_dispatch:
   push:
     branches: [ "main" ]
@@ -11,7 +11,6 @@ jobs:
   generate:
     permissions:
       contents: write
-
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
@@ -22,16 +21,60 @@ jobs:
           github_user_name: ${{ github.repository_owner }}
           outputs: dist/snake.svg?palette=github-dark
 
-      - name: Create pug overlay SVG
+      - name: Build pug-run.svg (embed snake + sprite animation)
         run: |
-          {
-            echo '<svg xmlns="http://www.w3.org/2000/svg" width="900" height="200">'
-            echo '  <image href="snake.svg" x="0" y="0" width="900" height="200" />'
-            echo '  <image href="https://raw.githubusercontent.com/NicolasSDB/profile-assets/main/pug.gif" width="40" height="40">'
-            echo '    <animateMotion dur="10s" repeatCount="indefinite" path="M 0 100 L 900 100" />'
-            echo '  </image>'
-            echo '</svg>'
-          } > dist/pug-run.svg
+          node <<'NODE'
+          const fs = require("fs");
+
+          // Lê o snake e mantém só o conteúdo interno (sem <svg> externo)
+          const snakeInner = fs.readFileSync("dist/snake.svg", "utf8")
+            .replace(/<\?xml[^>]*\?>\s*/g, "")
+            .replace(/^\s*<svg[^>]*>/i, "")
+            .replace(/<\/svg>\s*$/i, "");
+
+          const W = 900;
+          const H = 200;
+
+          // Seus frames (do repo profile-assets)
+          const frames = [
+            "https://raw.githubusercontent.com/NicolasSDB/profile-assets/main/2.png",
+            "https://raw.githubusercontent.com/NicolasSDB/profile-assets/main/3.png",
+            "https://raw.githubusercontent.com/NicolasSDB/profile-assets/main/4.png",
+            "https://raw.githubusercontent.com/NicolasSDB/profile-assets/main/5.png",
+          ];
+
+          // troca de frame (sprite)
+          const frameValues = frames.join(";") + ";" + frames[0];
+
+          const svg = `
+          <svg xmlns="http://www.w3.org/2000/svg"
+               xmlns:xlink="http://www.w3.org/1999/xlink"
+               width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">
+
+            <!-- snake embutido (fundo) -->
+            <g>${snakeInner}</g>
+
+            <!-- pug sprite -->
+            <image id="pug" href="${frames[0]}" xlink:href="${frames[0]}" width="42" height="42">
+
+              <!-- animação do sprite (perninhas) -->
+              <animate attributeName="href" dur="0.33s" repeatCount="indefinite"
+                       calcMode="discrete" values="${frameValues}" />
+              <animate attributeName="xlink:href" dur="0.33s" repeatCount="indefinite"
+                       calcMode="discrete" values="${frameValues}" />
+
+              <!-- movimento (vai e volta) -->
+              <animateMotion dur="10s" repeatCount="indefinite"
+                             keyTimes="0;0.5;1"
+                             calcMode="linear"
+                             path="M 20 125 L 860 125 L 20 125" />
+            </image>
+          </svg>
+          `.trim();
+
+          fs.writeFileSync("dist/pug-run.svg", svg, "utf8");
+          console.log("OK: dist/pug-run.svg gerado com sprite + movimento.");
+          NODE
 
       - name: Publish to output branch
         uses: crazy-max/ghaction-github-pages@v4
