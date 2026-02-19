@@ -1,0 +1,85 @@
+name: Generate Pug Runner
+
+on:
+  schedule:
+    - cron: "0 */12 * * *"  # a cada 12h
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  generate:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Generate base snake.svg
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: dist/pug-run.svg?palette=github-dark
+
+      - name: Patch SVG to replace snake with Pug runner
+        run: |
+          node <<'NODE'
+          const fs = require("fs");
+
+          const file = "dist/pug-run.svg";
+          let svg = fs.readFileSync(file, "utf8");
+
+          // 1) Pega o primeiro path "d" encontrado (normalmente é o caminho da cobra).
+          const match = svg.match(/<path[^>]*\sd="([^"]+)"/i);
+          if (!match) {
+            console.error("Não encontrei nenhum <path d=\"...\"> no SVG. Estrutura mudou.");
+            process.exit(1);
+          }
+          const d = match[1];
+
+          // 2) Esconde o desenho da cobra (mantém o grid/dots).
+          //    (Se não achar class/id, dá um fallback: reduzir opacidade de paths após injetar CSS.)
+          if (!svg.includes("<style")) {
+            svg = svg.replace("<svg", `<svg`);
+            svg = svg.replace(">", `><style>
+              /* tentativa de esconder a cobra sem afetar o grid */
+              path { }
+            </style>`);
+          }
+
+          // 3) Injeta um path de motion + o pug andando nele.
+          //    Observação: SVG do GitHub costuma aceitar animateMotion em SVG servido via raw.githubusercontent.
+          const pugUrl = "https://raw.githubusercontent.com/NicolasSDB/profile-assets/main/pug.gif";
+
+          const injection = `
+          <defs>
+            <path id="pugMotionPath" d="${d}"></path>
+          </defs>
+
+          <!-- Esconde a cobra original (deixa só o efeito "comendo" implícito pelo caminho) -->
+          <style>
+            /* tenta esconder paths do "snake"; se esconder demais, comente esta linha */
+            g[id*="snake"], g[class*="snake"], path[style*="snake"], path[id*="snake"] { opacity: 0 !important; }
+          </style>
+
+          <image href="${pugUrl}" width="28" height="28">
+            <animateMotion dur="12s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#pugMotionPath"></mpath>
+            </animateMotion>
+          </image>
+          `;
+
+          // injeta logo após a abertura do <svg ...>
+          svg = svg.replace(/(<svg[^>]*>)/i, `$1${injection}`);
+
+          fs.writeFileSync(file, svg, "utf8");
+          console.log("OK: pug-run.svg patch aplicado.");
+          NODE
+
+      - name: Publish to output branch
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
