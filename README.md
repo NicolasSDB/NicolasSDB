@@ -1,16 +1,33 @@
-## Hi there 👋
+<h1 align="center">Nicolas Brito 👨‍💻</h1>
 
-<!--
-**NicolasSDB/NicolasSDB** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+<p align="center">
+Backend Developer • PHP • SQL Server • Industrial Systems
+</p>
 
-Here are some ideas to get you started:
+<p align="center">
+  <img src="https://raw.githubusercontent.com/NicolasSDB/profile-assets/main/pug.gif" width="450" />
+</p>
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+---
+
+## 🚀 Sobre
+
+Desenvolvedor focado em sistemas internos e monitoramento de produção industrial.
+Experiência prática com banco de dados SQL Server e desenvolvimento backend em PHP.
+
+---
+
+## 🛠 Stack
+
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=php,js,laravel,mysql,html,css,git" />
+</p>
+
+---
+
+## 📈 GitHub Stats
+
+<p align="center">
+  <img height="150" src="https://github-readme-stats.vercel.app/api?username=NicolasSDB&show_icons=true&theme=dracula" />
+  <img height="150" src="https://github-readme-stats.vercel.app/api/top-langs/?username=NicolasSDB&layout=compact&theme=dracula" />
+</p>
